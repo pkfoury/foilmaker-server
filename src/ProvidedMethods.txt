@@ -1,0 +1,38 @@
+// What about GameThread.addUser()?
+
+public class PlayerThread {
+    public boolean sendQuestion(String question);
+    public boolean sendSuggestions(String[] suggestions);
+    public boolean sendScores(String[] scores);
+    public User getUser();  
+}
+
+public class User {
+
+    public static boolean isValidUsername(String username) {}
+    public static boolean isValidPassword(String password) {}
+    public static boolean doesUserExist(String username) {}
+    public static boolean isAuthenticated(String username, String password) {} // is it a valid username - password combination
+    public static boolean isUserLoggedIn(String username) {}
+    public static boolean isUserPlaying() {}
+    public static User    login(String username, String password) {}
+
+    public String  getUserToken() {}
+    public boolean logout() {}
+
+}
+
+public class GameThread {
+
+    public static boolean    isValidGameToken() {}
+    public static GameThread getGameThread(String gameToken) {}
+
+    public GameThread() {} // Only player thread for the game leader should use this
+    public PlayerThread getLeader() {}
+    public String getGameToken() {}
+    public boolean addUser(User player) {} // This needs to be done for every user, including the leader
+    public boolean submitPlayerSuggestion(String suggestion, User player) {}
+    public boolean submitPlayerChoice(String choice, User player) {}
+    public void    startGame();
+
+}
